@@ -5,6 +5,13 @@ from calculation import effective_ke
 from ui.visualization import *
 from streamlit_folium import st_folium
 
+import os
+
+st.write("Current working directory:", os.getcwd())
+st.write("Files in ./data:", os.listdir("data") if os.path.exists("data") else "No data folder found")
+st.write("File exists:", os.path.exists("data/top_10_craters.csv"))
+
+
 st.set_page_config(layout="wide")
 st.title("🌍 Asteroid Impact Simulator")
 
@@ -127,3 +134,4 @@ elif st.session_state.mode == "result":
             st.session_state.params = None
             st.session_state.mode = "input"
             st.rerun()
+
