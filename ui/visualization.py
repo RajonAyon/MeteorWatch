@@ -6,6 +6,7 @@ from streamlit_folium import st_folium
 from calculation import *
 import branca.colormap as cm
 import pydeck as pdk
+import numpy as np
 
 class CraterAndEjecta:
     def __init__(self, density, radius, velocity, angle):
@@ -524,5 +525,6 @@ class HumanImpact:
             tooltip=["Category","Count"]
         ).properties(width=400, height=400, title="Overall Human Impact Distribution")
         st.altair_chart(pie_chart)
+
 
 
