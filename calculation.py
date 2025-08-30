@@ -1,16 +1,26 @@
 
-import rasterio
-import rasterio.mask
-from shapely.geometry import Point, mapping
-import pyproj
-from shapely.ops import transform
-import math
-import numpy as np
 import os
 import requests
+import rasterio
+from shapely.geometry import Point, mapping
+from shapely.ops import transform
+import pyproj
 
-
+# Path to raster on the server
 raster_path = "data/ppp_2020_1km_Aggregated.tif"
+
+# Dropbox (or any cloud) link for the large file
+dropbox_url = "https://www.dropbox.com/scl/fi/zkesvwoui2z1xsqe33yc5/ppp_2020_1km_Aggregated.tif?dl=1"
+
+# Ensure the file exists
+if not os.path.exists(raster_path):
+    os.makedirs("data", exist_ok=True)
+    print("Downloading raster dataset...")
+    r = requests.get(dropbox_url, stream=True)
+    with open(raster_path, "wb") as f:
+        for chunk in r.iter_content(chunk_size=8192):
+            f.write(chunk)
+    print("Download complete.")
 
 def get_population_in_radius(lat, lon, radius_km):
     # Load raster
@@ -56,6 +66,7 @@ def format_large_number(num):
         return f"{num/1_000:.1f}K"
     else:
         return str(num)
+
 
 
 
