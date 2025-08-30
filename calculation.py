@@ -7,6 +7,10 @@ from shapely.ops import transform
 import pyproj
 import math
 
+
+import os
+
+
 # Path to raster on the server
 raster_path = "data/ppp_2020_1km_Aggregated.tif"
 
@@ -22,6 +26,12 @@ if not os.path.exists(raster_path):
         for chunk in r.iter_content(chunk_size=8192):
             f.write(chunk)
     print("Download complete.")
+
+
+print(os.path.exists(raster_path))
+print(os.path.getsize(raster_path))
+
+
 
 def get_population_in_radius(lat, lon, radius_km):
     # Load raster
@@ -67,6 +77,7 @@ def format_large_number(num):
         return f"{num/1_000:.1f}K"
     else:
         return str(num)
+
 
 
 
