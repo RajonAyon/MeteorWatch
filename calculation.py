@@ -12,18 +12,6 @@ import requests
 
 raster_path = "data/ppp_2020_1km_Aggregated.tif"
 
-# Dropbox link (replace with your actual file link ending with ?dl=1)
-dropbox_url = "https://www.dropbox.com/scl/fi/zkesvwoui2z1xsqe33yc5/ppp_2020_1km_Aggregated.tif?dl=1"
-
-# Download dataset if not exists
-if not os.path.exists(raster_path):
-    os.makedirs("data", exist_ok=True)
-    r = requests.get(dropbox_url)
-    with open(raster_path, "wb") as f:
-        f.write(r.content)
-    print("Dataset downloaded from Dropbox.")
-
-
 def get_population_in_radius(lat, lon, radius_km):
     # Load raster
     with rasterio.open(raster_path) as src:
@@ -68,5 +56,6 @@ def format_large_number(num):
         return f"{num/1_000:.1f}K"
     else:
         return str(num)
+
 
 
