@@ -169,7 +169,7 @@ class CraterAndEjecta:
         st.subheader("Comparison with Top 10 Largest Craters")
 
         # Load CSV (assume you saved it previously)
-        df_craters = pd.read_csv(r"C:\Users\Sinfo Tech Computer\3D Objects\asteroid\data\top_10_craters.csv")
+        df_craters = pd.read_csv("data/top_10_craters.csv")
 
         # Add user's crater
         user_row = pd.DataFrame([{
@@ -315,7 +315,7 @@ class ThermalAndSeismic:
 
         # --- Load crater CSV safely ---
         df_craters = pd.read_csv(
-            r"C:\Users\Sinfo Tech Computer\3D Objects\asteroid\data\top_10_craters.csv",
+            "data/top_10_craters.csv",
             quotechar='"'
         )
         df_craters["Thermal_Radius_km"] = df_craters["Thermal_Radius_km"].replace('~', '', regex=True).astype(float)
@@ -524,4 +524,5 @@ class HumanImpact:
             tooltip=["Category","Count"]
         ).properties(width=400, height=400, title="Overall Human Impact Distribution")
         st.altair_chart(pie_chart)
+
 
