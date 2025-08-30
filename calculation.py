@@ -5,6 +5,7 @@ import rasterio
 from shapely.geometry import Point, mapping
 from shapely.ops import transform
 import pyproj
+import math
 
 # Path to raster on the server
 raster_path = "data/ppp_2020_1km_Aggregated.tif"
@@ -66,6 +67,7 @@ def format_large_number(num):
         return f"{num/1_000:.1f}K"
     else:
         return str(num)
+
 
 
 
