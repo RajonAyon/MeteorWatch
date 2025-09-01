@@ -14,22 +14,6 @@ import os
 # Path to raster on the server
 raster_path = "data/ppp_2020_1km_Aggregated.tif"
 
-# Dropbox (or any cloud) link for the large file
-dropbox_url = "https://www.dropbox.com/scl/fi/zkesvwoui2z1xsqe33yc5/ppp_2020_1km_Aggregated.tif?dl=1"
-
-# Ensure the file exists
-if not os.path.exists(raster_path):
-    os.makedirs("data", exist_ok=True)
-    print("Downloading raster dataset...")
-    r = requests.get(dropbox_url, stream=True)
-    with open(raster_path, "wb") as f:
-        for chunk in r.iter_content(chunk_size=8192):
-            f.write(chunk)
-    print("Download complete.")
-
-
-print(os.path.exists(raster_path))
-print(os.path.getsize(raster_path))
 
 
 
