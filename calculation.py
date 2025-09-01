@@ -6,6 +6,7 @@ from shapely.geometry import Point, mapping
 from shapely.ops import transform
 import pyproj
 import math
+from rasterio.mask import mask # Correct import statement
 
 
 import os
