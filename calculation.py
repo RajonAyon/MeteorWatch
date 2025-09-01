@@ -13,7 +13,7 @@ import os
 
 
 # Path to raster on the server
-raster_path = "data/ppp_2020_1km_Aggregated.tif"
+raster_path = "data/ppp_2020_5km_Aggregated.tif"
 
 
 
